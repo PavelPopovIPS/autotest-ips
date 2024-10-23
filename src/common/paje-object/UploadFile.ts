@@ -9,7 +9,7 @@ class UploadFile {
 
     public async uploadFile(filePath: string): Promise<void> {
         await this.getInputFile().waitForExist({
-            timeoutMsg: 'File input field was not exist',
+            timeoutMsg: 'File input field was not existed',
         })
         await showHiddenFileInput(this.browser)
         const file: string = await this.browser.uploadFile(filePath)
