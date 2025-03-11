@@ -5,18 +5,19 @@
             "name": "local - chrome",
             "type": "node",
             "request": "launch",
-            "args": ["src/wdio.conf.ts", "--spec", "${relativeFile}"],
+            "args": ["src/wdio.conf.ts", "--spec", "${file}"],
             "cwd": "${workspaceFolder}",
             "autoAttachChildProcesses": true,
             "program": "${workspaceRoot}/node_modules/@wdio/cli/bin/wdio.js",
             "console": "integratedTerminal",
+            "envFile": "${workspaceRoot}/.env"
           },
           {
             "name": "ts-run",
             "type": "node",
             "request": "launch",
             "runtimeArgs": ["-r", "ts-node/register"],
-            "args": ["${relativeFile}"],
+            "args": ["${file}"],
             "console": "integratedTerminal",
           }
     ]
