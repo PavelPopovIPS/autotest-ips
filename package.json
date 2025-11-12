@@ -9,7 +9,7 @@
         "@wdio/mocha-framework": "8.33.0",
         "@wdio/spec-reporter": "8.32.4",
         "axios": "0.26.0",
-        "chromedriver": "134.0.1",
+        "chromedriver": "^142.0.2",
         "qs": "6.11.0",
         "ts-node": "10.9.2",
         "typescript": "5.5.4",
