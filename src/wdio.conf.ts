@@ -1,29 +1,42 @@
-export const config: WebdriverIO.Config = {   
+export const config = {   
     autoCompileOpts: {
-        autoCompile: true,
+        autoCompileOpts: true,
         tsNodeOpts: {
             transpileOnly: true,
-            project: './tsconfig.json'
-        }
+            project: 'tsconfig.json',
+        },
+        tsConfigPathsOpts: {
+            baseUrl: './',
+        },
     },
-    specs: ['./src/**/*.test.ts'],
-    maxInstances: 5,
     capabilities: [{
+        acceptInsecureCerts: true,
         browserName: 'chrome',
         'goog:chromeOptions': {
-            args: ['window-size=1366,768'],
+            args: [
+                'window-size=1366,1035',
+                '--disable-logging',
+                '--disable-metrics',
+                '--disable-dev-shm-usage',
+                '--log-level=3', // Только FATAL ошибки
+            ],
         },
-        acceptInsecureCerts: true
+        /*
+        * wdio 9 по умолчанию работает по протоколу BiDi
+        * selenoid сходу не стал работать по новому протоколу
+        * явно указал работать по старому протоколу webdriver
+        */
+       'wdio:enforceWebDriverClassic' : true,
     }],
-    logLevel: 'error',
-    waitforTimeout: 20000,
-    connectionRetryTimeout: 60000,
     connectionRetryCount: 3,
-    services: ['chromedriver'],
-    reporters: ['spec'],
+    connectionRetryTimeout: 60000,
     framework: 'mocha',
+    logLevel: 'error',
+    maxInstances: 5,
     mochaOpts: {
-        ui: 'bdd',
         timeout: 60000
     },
+    reporters: ['spec'],
+    specs: ['./src/**/*.test.ts'],
+    waitforTimeout: 20000,
 }

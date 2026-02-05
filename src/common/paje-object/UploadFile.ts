@@ -16,7 +16,7 @@ class UploadFile {
         await this.getInputFile().setValue(file)
     }
 
-    private getInputFile(): ChainablePromiseElement<WebdriverIO.Element> {
+    private getInputFile(): ChainablePromiseElement {
         return this.browser.$('[type="file"]')
     }
 }
